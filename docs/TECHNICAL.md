@@ -118,8 +118,8 @@ pixel comparisons are the checks that do not depend on trusting that read-back.
 
 - Built against QuickLoot IE 4.1.3 only. Other 4.x versions were not checked.
 - The preview images in the installer are new screenshots taken on QuickLoot IE 4.1.3.
-- Not addressed from the 1.1.3 comments: misaligned first/last rows. 4.1.3's own `InfoBar`/`ListItemRenderer` changes
-  may affect it; not tested.
+- Misaligned first and last rows (1.1.3 comments, 2025-03-02): fixed by HotelKosmos in 1.1.3 ("Should be fixed now", same
+  day; 1.1.3 changelog "Fixed misalignments"). 1.2.0 copies the 1.1.3 layout offsets, so it is not an open issue.
 
 ### Fixed: dark line on the right edge of styles 2 and 5
 The 1.1.3 background bitmaps use a repeating, smoothed fill (`fillStyleType` 0x40). Each bitmap covers the panel exactly
