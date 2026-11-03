@@ -142,7 +142,7 @@ The build checks that the five SWFs are byte-identical to the released ones and 
 ## Known Issues
 No open issues from the 1.1.3 comments:
 - **Dark line on the right edge of styles 2 and 5** (reported 2025-09-01): fixed in 1.2.0. The background bitmap now
-  clamps at its edges instead of wrapping; see [docs/TECHNICAL.md](docs/TECHNICAL.md) section 5.
+  clamps at its edges instead of wrapping (confirmed in game); see [docs/TECHNICAL.md](docs/TECHNICAL.md) section 5.
 - **Misaligned first and last rows** (reported 2025-03-02): fixed by HotelKosmos in 1.1.3 the same day. 1.2.0 keeps
   the 1.1.3 layout, so the fix carries over.
 

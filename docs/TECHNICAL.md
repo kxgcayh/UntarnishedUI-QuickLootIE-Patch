@@ -111,7 +111,8 @@ as they did in 1.1.3 (READ, from the decompiled code).
 | rendered `LootMenu` sprite, 1.2.0 vs 1.1.3 | styles 3, 4: max channel difference 6/255; styles 1, 2, 7: about 50 px differ, the two scroll arrows, which stay at x = 860 while 4.1.3 moved the background 1 px right |
 | package contents vs 1.1.3 archive | 5 SWFs, `fomod/info.xml` and the preview images changed; style 5 moved from `style7` to `style5`; `ModuleConfig.xml` unchanged; `QLIE-LICENSE.md`, `docs/` and `source/` added at the archive root (the installer does not install them) |
 
-Not verified: behaviour in game. The SWFs were read back with FFDec, the same tool that wrote them; the bytecode and
+In game (author, 2026-11-03): all five styles load and display on QuickLoot IE 4.1.3 (the installer previews are those
+screenshots), and the right-edge fix on styles 2 and 5 is confirmed. The SWFs were read back with FFDec, the same tool that wrote them; the bytecode and
 pixel comparisons are the checks that do not depend on trusting that read-back.
 
 ## 5. Known limitations
@@ -136,7 +137,7 @@ The bitmaps' edge opacity (MEASURED, mean alpha per column):
 Top and bottom rows match in every style, so there is no vertical seam. 1.2.0 switches the fill to clipped, smoothed
 (0x41), which clamps the edge pixels instead of wrapping. That is the only change in the SWFs of styles 2 to 5 (one
 attribute each, MEASURED). FFDec renders of the background shape, last column alpha before -> after: style 2 at zoom 1.5,
-31 -> 0; style 5 at zoom 3 and 4, 14 and 23 -> 0 (MEASURED in FFDec's renderer; not yet checked in game).
+31 -> 0; style 5 at zoom 3 and 4, 14 and 23 -> 0 (MEASURED in FFDec's renderer). Confirmed in game by the author on 2026-11-03: the line is gone on both styles.
 
 ## 6. Rebuilding from source
 
