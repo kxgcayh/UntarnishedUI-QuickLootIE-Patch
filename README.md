@@ -39,6 +39,41 @@ Checks (details in [docs/TECHNICAL.md](docs/TECHNICAL.md)):
 
 ---
 
+## Where the Sources Come From
+
+The build reads only files in this repository. Nothing has to be downloaded from Nexus to rebuild 1.2.0.
+
+### `vendor/`: the inputs
+Six SWFs copied unmodified out of two Nexus downloads. Each is byte-identical to the file inside its archive, and
+`build.py` checks them against `inputs.sha256` before building.
+
+| file | Nexus download | path in the archive |
+|---|---|---|
+| `vendor/qlie-4.1.3/LootMenuIE.swf` | [QuickLoot IE](https://www.nexusmods.com/skyrimspecialedition/mods/120075) 4.1.3, main file (archive sha256 `3ffe0fcb...a5f`) | `Interface/LootMenuIE.swf` |
+| `vendor/untarnished-1.1.3/styleN/LootMenuIE.swf` | [Quickloot IE - Untarnished UI Patch](https://www.nexusmods.com/skyrimspecialedition/mods/140287) 1.1.3, main file (archive sha256 `6bfb4ed8...beb`) | `interface/styleN/LootMenuIE.swf` (Style 5 is `style7` there) |
+
+Per-file hashes and the terms they are used under: [vendor/README.md](vendor/README.md).
+
+### `src/`: how the transplant was worked out
+`src/build_style.py` is not from either mod; it was written for this port. Its rules come from comparing these
+downloads, after converting each SWF to XML with FFDec (`-swf2xml`):
+
+1. **1.1.3 against stock QuickLoot IE 3.4.1** (the [QuickLoot IE](https://www.nexusmods.com/skyrimspecialedition/mods/120075)
+   3.4.1 main file, under Old files): the code is identical, and exactly five things differ. Those are what the skin
+   is, and the only things the script copies.
+2. **Stock 3.4.1 against stock 4.1.3**: the menu's characters were renumbered (background shape 47 -> 50, highlight
+   34 -> 37, `LootMenu` sprite 56 -> 59), while the shapes the skin replaces are structurally the same. That gives the
+   id mapping at the top of the script.
+3. **The QuickLoot IE Developer SDKs** 3.4.0 and 4.1.3 (Miscellaneous and Old files on the QuickLoot IE page) hold
+   the real Flash project and ActionScript source. They were used to tell QuickLoot IE's own changes apart from the
+   skin's, not as build input.
+
+`src/swfmap.py`, `src/shapediff.py` and `src/pngdiff.py` are the helpers used for those comparisons and for the
+checks above. The full findings, with every changed value, are in [docs/TECHNICAL.md](docs/TECHNICAL.md) sections
+1 to 4. You only need these downloads again to redo the analysis, for example to port to a newer QuickLoot IE.
+
+---
+
 ## Compatibility
 
 | Mod | Version | Status |
