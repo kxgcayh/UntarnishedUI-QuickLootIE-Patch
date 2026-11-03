@@ -103,7 +103,7 @@ checks above. The full findings, with every changed value, are in [docs/TECHNICA
 ## Installation
 
 ### Via Mod Manager (Recommended)
-1. Download `Quickloot IE - Untarnished UI Patch 1.2.0.zip` from the releases.
+1. Download `UntarnishedUI-QuickLootIE-Patch-1.2.0.zip` from the releases.
 2. Install it with MO2 or Vortex and pick a style in the installer.
 3. Let it overwrite QuickLoot IE, so its `interface/LootMenuIE.swf` wins.
 
@@ -134,7 +134,7 @@ python3 build.py --fetch-ffdec
 ```
 
 The build checks that the five SWFs are byte-identical to the released ones and writes
-`dist/Quickloot IE - Untarnished UI Patch 1.2.0.zip`. Details, other platforms and how to change the patch:
+`dist/UntarnishedUI-QuickLootIE-Patch-1.2.0.zip`. Details, other platforms and how to change the patch:
 [BUILDING.md](BUILDING.md).
 
 ---

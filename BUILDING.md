@@ -41,7 +41,7 @@ python3 build.py                 # later runs
 python3 build.py --skip-build    # repackage the SWFs already in build/pkg (after changing images, docs or fomod)
 ```
 
-Output: `dist/Quickloot IE - Untarnished UI Patch 1.2.0.zip` (version from `fomod/info.xml`). Intermediate files are
+Output: `dist/UntarnishedUI-QuickLootIE-Patch-1.2.0.zip` (version from `fomod/info.xml`). Intermediate files are
 in `build/`.
 
 What the script does:
@@ -84,7 +84,7 @@ java -jar tools/ffdec/ffdec.jar -xml2swf out1.xml LootMenuIE.swf
   tags that differ between two dumps. `src/pngdiff.py` compares two PNG renders.
 - The installer: `fomod/ModuleConfig.xml` and `fomod/info.xml`, both UTF-16 like the 1.1.3 originals. Keep the
   encoding when editing.
-- Preview images: `images/styleN.jpg`, 1600 px wide JPEG.
+- Preview images: `images/styleN.jpg`, JPEG (the shipped ones are 1920 x 1080, 230-380 KB).
 - After an intended change to the SWFs, update `expected.sha256` from `build/pkg/interface/`.
 
 ## Repository layout

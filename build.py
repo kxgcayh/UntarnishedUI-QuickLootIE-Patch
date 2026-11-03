@@ -115,7 +115,7 @@ def package():
     files = STATIC + [(f"interface/style{n}/LootMenuIE.swf", str(PKG / f"interface/style{n}/LootMenuIE.swf")) for n in STYLES]
     dist = HERE / "dist"
     dist.mkdir(exist_ok=True)
-    out = dist / f"Quickloot IE - Untarnished UI Patch {version}.zip"
+    out = dist / f"UntarnishedUI-QuickLootIE-Patch-{version}.zip"
     dirs = set()
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as zf:
         for arc, src in files:
