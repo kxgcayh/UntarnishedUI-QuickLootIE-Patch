@@ -1,0 +1,23 @@
+# Build output
+build/
+dist/
+
+# Local work: upstream downloads, FFDec exports, release records, notes
+upstream/
+extracted/
+release/
+NOTES.md
+.backups/
+
+# Archives
+*.zip
+*.7z
+
+# Python
+__pycache__/
+
+# OS generated files
+.DS_Store
+._*
+Thumbs.db
+tools/
