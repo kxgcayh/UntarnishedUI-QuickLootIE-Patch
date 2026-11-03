@@ -72,6 +72,18 @@ downloads, after converting each SWF to XML with FFDec (`-swf2xml`):
 checks above. The full findings, with every changed value, are in [docs/TECHNICAL.md](docs/TECHNICAL.md) sections
 1 to 4. You only need these downloads again to redo the analysis, for example to port to a newer QuickLoot IE.
 
+### Source code of the menu
+- **The original 1.1.3 patch has no source.** HotelKosmos released only the five compiled SWFs, so this port works
+  on the SWFs directly instead of on a Flash project.
+- **QuickLoot IE's source is its Developer SDK 4.1.3** (Miscellaneous files on the
+  [QuickLoot IE](https://www.nexusmods.com/skyrimspecialedition/mods/120075?tab=files) page): the Flash project
+  `LootMenuIE/LootMenuIE.fla` and the ActionScript classes in `LootMenuIE/QuickLoot/` (`LootMenu.as`,
+  `ListItemRenderer.as`, `InfoBar.as`, ...). The menu code in every SWF here comes unchanged from it, so this is the
+  source for that code. The SDK's own `Interface/LootMenuIE.swf` is byte-identical to `vendor/qlie-4.1.3/LootMenuIE.swf`.
+- **To edit a skin in Adobe Animate,** open the SDK's `LootMenuIE.fla` and apply the five changes listed in
+  [docs/TECHNICAL.md](docs/TECHNICAL.md) section 2 by hand. There is no `.fla` for the 1.1.3 artwork; its shapes and
+  bitmaps exist only inside the 1.1.3 SWFs (FFDec can export them).
+
 ---
 
 ## Compatibility
@@ -142,5 +154,6 @@ The build checks that the five SWFs are byte-identical to the released ones and 
 - **kxgcayh** (Nexus: kautsaralbaa): port to QuickLoot IE 4.1.3, build scripts and release packaging.
 
 QuickLoot IE is licensed under the GNU GPL v3, and every SWF here is a modified QuickLoot IE menu, so this project is
-released under the same license. See [LICENSE](LICENSE). The original patch's Nexus permissions allow modification,
+released under the same license. See [LICENSE](LICENSE). The source of the menu code is QuickLoot IE's Developer
+SDK 4.1.3 (see [Source code of the menu](#source-code-of-the-menu)); the changes made to it are `src/build_style.py`. The original patch's Nexus permissions allow modification,
 release of fixes and asset use; not for sale.
