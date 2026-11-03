@@ -140,7 +140,8 @@ The build checks that the five SWFs are byte-identical to the released ones and 
 ---
 
 ## Known Issues
-- Not fixed from the 1.1.3 comments: a dark line on the right edge of styles 2 and 5.
+- Fixed: the dark line on the right edge of styles 2 and 5 reported on 1.1.3 (the background bitmap now clamps at
+  its edges instead of wrapping; see [docs/TECHNICAL.md](docs/TECHNICAL.md) section 5). Not yet confirmed in game.
 - Misaligned first/last rows were reported on 1.1.3; QuickLoot IE 4.1.3's own `InfoBar` changes may affect this.
 
 ---

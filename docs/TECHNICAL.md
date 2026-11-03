@@ -104,7 +104,7 @@ as they did in 1.1.3 (READ, from the decompiled code).
 
 | check | result |
 |---|---|
-| AS2 bytecode (pcode) of each 1.2.0 SWF vs stock 4.1.3 | identical, all 5 styles |
+| AS2 bytecode (pcode) of each 1.2.0 SWF vs stock 4.1.3 | identical, all 5 styles (checked before the clipped-fill fix, which changes no code) |
 | AS2 bytecode of each 1.1.3 SWF vs stock 3.4.1 | identical, all 5 styles |
 | toolchain no-op: stock 4.1.3 through `swf2xml` + `xml2swf` with no edit | byte-identical SWF |
 | renders of all sprites not touched by the port (128 per style) vs stock 4.1.3 | pixel-identical, all 5 styles |
@@ -118,8 +118,25 @@ pixel comparisons are the checks that do not depend on trusting that read-back.
 
 - Built against QuickLoot IE 4.1.3 only. Other 4.x versions were not checked.
 - The preview images in the installer are new screenshots taken on QuickLoot IE 4.1.3.
-- Not addressed from the 1.1.3 comments: a dark line on the right edge of styles 2 and 5 (style 5 was the `style7`
-  folder in 1.1.3), and misaligned first/last rows. 4.1.3's own `InfoBar`/`ListItemRenderer` changes may affect the second; not tested.
+- Not addressed from the 1.1.3 comments: misaligned first/last rows. 4.1.3's own `InfoBar`/`ListItemRenderer` changes
+  may affect it; not tested.
+
+### Fixed: dark line on the right edge of styles 2 and 5
+The 1.1.3 background bitmaps use a repeating, smoothed fill (`fillStyleType` 0x40). Each bitmap covers the panel exactly
+once (546 px x 20 twips = 10920 twips), but with smoothing the renderer blends each edge pixel with the opposite edge.
+The bitmaps' edge opacity (MEASURED, mean alpha per column):
+
+| style | left column | right column | result of wrapping |
+|---|---|---|---|
+| 2 | 191 | 0 | dark line on the right edge |
+| 3 | 0 | 0 | none |
+| 4 | 0 | 0 | none |
+| 5 (`style7` in 1.1.3) | 98 | 0 | dark line on the right edge |
+
+Top and bottom rows match in every style, so there is no vertical seam. 1.2.0 switches the fill to clipped, smoothed
+(0x41), which clamps the edge pixels instead of wrapping. That is the only change in the SWFs of styles 2 to 5 (one
+attribute each, MEASURED). FFDec renders of the background shape, last column alpha before -> after: style 2 at zoom 1.5,
+31 -> 0; style 5 at zoom 3 and 4, 14 and 23 -> 0 (MEASURED in FFDec's renderer; not yet checked in game).
 
 ## 6. Rebuilding from source
 

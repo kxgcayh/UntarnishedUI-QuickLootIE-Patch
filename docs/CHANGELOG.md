@@ -8,6 +8,8 @@
 - Skin unchanged from 1.1.3: same backgrounds, row highlight outline, layout offsets and `buttonArtDD.swf` button art.
 - Keeps the 4.1.3 info bar placement and the 4.1.3 background x offset (1 px right of 1.1.3).
 - Installer: same choices as 1.1.3; new preview screenshots taken on QuickLoot IE 4.1.3; `info.xml` name, version and credits updated.
+- Fixed the dark line on the right edge of styles 2 and 5: the background bitmap is now clipped instead of repeated,
+  so its dark left edge no longer bleeds into the right edge.
 - Style 5's folder and preview image renamed from `style7` to `style5` to match its installer label.
 - Details: `TECHNICAL.md`.
 

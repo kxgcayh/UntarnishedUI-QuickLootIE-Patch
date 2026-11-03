@@ -8,6 +8,7 @@ original patch changed relative to stock 3.4.1 is copied:
   - LootMenu layout    3.4.1 sprite 56 placements -> 4.1.3 sprite 59 (same instance names)
   - button art import  skyui/buttonart.swf -> the patch's URL
   - background scaling grid removed where the patch has none (styles 2, 3, 4 and 5)
+  - background bitmap fill switched from repeating to clipped (fixes the dark right edge on styles 2 and 5)
 
 usage: build_style.py stock413.xml style_N.xml out.xml
 """
@@ -71,6 +72,10 @@ def main(base_p, style_p, out_p):
         key = "characterID" if nb.get("characterID") else "characterId"
         nb.set(key, BITMAP_ID)
         f.set("bitmapId", BITMAP_ID)
+        # the bitmap covers the panel exactly once; a repeating fill (0x40) wraps the left edge into the right edge
+        # under smoothing, the dark line on styles 2 and 5. Clipped (0x41, still smoothed) clamps the edges instead.
+        if f.get("fillStyleType") == "64":
+            f.set("fillStyleType", "65")
         bt.insert(bg_i, nb)  # definition must precede its first use
 
     # 3. LootMenu layout
@@ -92,7 +97,7 @@ def main(base_p, style_p, out_p):
     _, b_imp = find(bt, "ImportAssets2Tag")
     b_imp.set("url", s_imp.get("url"))
 
-    # 5. scaling grid: removed by the patch for styles 2 and 7
+    # 5. scaling grid: removed by the patch for the bitmap styles (2, 3, 4 and 5)
     s_grids = [t for t in st if t.get("type") == "DefineScalingGridTag"]
     b_grids = [t for t in bt if t.get("type") == "DefineScalingGridTag" and t.get("characterId") == GRID_NEW]
     if not s_grids:
