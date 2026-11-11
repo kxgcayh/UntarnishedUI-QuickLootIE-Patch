@@ -95,8 +95,8 @@ checks above. The full findings, with every changed value, are in [docs/TECHNICA
 | QuickLoot IE | 3.x | Use the original 1.1.3 patch instead |
 
 ### Prerequisites
-- [QuickLoot IE](https://www.nexusmods.com/skyrimspecialedition/mods/120075) 4.1.3 and its requirements (SKSE, SkyUI, ...).
-- Untarnished UI or Dear Diary Dark Mode. Either provides `interface/skyui/buttonArtDD.swf`, which the skins load.
+- [QuickLoot IE](https://www.nexusmods.com/skyrimspecialedition/mods/120075) 4.1.3 and its requirements: [SKSE](https://skse.silverlock.org/), [SkyUI](https://www.nexusmods.com/skyrimspecialedition/mods/12604), [Address Library for SKSE Plugins](https://www.nexusmods.com/skyrimspecialedition/mods/32444) and [PapyrusUtil SE](https://www.nexusmods.com/skyrimspecialedition/mods/13048).
+- [Untarnished UI](https://www.nexusmods.com/skyrimspecialedition/mods/75188) or [Dear Diary Dark Mode](https://www.nexusmods.com/skyrimspecialedition/mods/60837). Either provides `interface/skyui/buttonArtDD.swf`, which the skins load.
 
 ---
 
@@ -148,7 +148,20 @@ No open issues from the 1.1.3 comments:
 
 ---
 
+## More mods
+
+Other Skyrim mods by kxgcayh:
+
+- [waccf-simonrim-skypatcher-patch](https://github.com/kxgcayh/waccf-simonrim-skypatcher-patch): Restores Simonrim enchantments, charges and names, and Gourmet effects, over WACCF's SkyPatcher configs.
+- [odin-mysticism-adamant-patch](https://github.com/kxgcayh/odin-mysticism-adamant-patch): Lets Odin - Skyrim Magic Overhaul run with Mysticism and Adamant.
+- [tposc-compat-patch](https://github.com/kxgcayh/tposc-compat-patch): The People Of Skyrim Complete patch: forwards USSEP fixes and keeps its landscape and navmesh over Cutting Room Floor.
+- [beasthhbb-ibeasts-jkj-patch](https://github.com/kxgcayh/beasthhbb-ibeasts-jkj-patch): Fixes headless and dark-faced Khajiit when Project ja-Kha'jay is used with BeastHHBB and iBeasts.
+- [lawless-tamrielic-patch-update](https://github.com/kxgcayh/lawless-tamrielic-patch-update): Updates the Lawless Bandit War plugins for Tamrielic Distribution 2.0 and later.
+- [WhereWasI](https://github.com/kxgcayh/WhereWasI): SKSE plugin: a recap on save load after a break.
+
 ## Credits & License
+
+Re-checked on 2026-11-11 against each mod's Nexus permission block and author notes: the permissions below still match.
 
 - **HotelKosmos**: the original [Untarnished UI QuickLoot IE patch](https://www.nexusmods.com/skyrimspecialedition/mods/140287) and all five skins.
 - **AtomCrafty**: the reskin the original patch was based on; co-author of QuickLoot IE.
