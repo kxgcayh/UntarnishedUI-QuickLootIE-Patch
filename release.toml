@@ -1,0 +1,33 @@
+name = "UntarnishedUI-QuickLootIE-Patch"
+display_name = "Untarnished UI - QuickLoot IE 4.x Patch"
+version = "1.2.0"
+description = "HotelKosmos's five Untarnished UI skins for QuickLoot IE, rebuilt on the QuickLoot IE 4.1.3 loot menu. FOMOD with one style per option."
+
+# archive path = source path (relative to this folder); dist/pkg/ is written by: python3 build.py
+# The FOMOD is laid out flat (fomod/ plus the interface folders) so MO2 runs the installer on the release zip itself.
+[files]
+"QLIE-LICENSE.md" = "LICENSE"
+"docs/CHANGELOG.md" = "docs/CHANGELOG.md"
+"docs/TECHNICAL.md" = "docs/TECHNICAL.md"
+"fomod/info.xml" = "fomod/info.xml"
+"fomod/ModuleConfig.xml" = "fomod/ModuleConfig.xml"
+"source/build_style.py" = "src/build_style.py"
+"source/pngdiff.py" = "src/pngdiff.py"
+"source/shapediff.py" = "src/shapediff.py"
+"source/swfmap.py" = "src/swfmap.py"
+"images/style1.jpg" = "images/style1.jpg"
+"images/style2.jpg" = "images/style2.jpg"
+"images/style3.jpg" = "images/style3.jpg"
+"images/style4.jpg" = "images/style4.jpg"
+"images/style5.jpg" = "images/style5.jpg"
+"interface/style1/LootMenuIE.swf" = "dist/pkg/interface/style1/LootMenuIE.swf"
+"interface/style2/LootMenuIE.swf" = "dist/pkg/interface/style2/LootMenuIE.swf"
+"interface/style3/LootMenuIE.swf" = "dist/pkg/interface/style3/LootMenuIE.swf"
+"interface/style4/LootMenuIE.swf" = "dist/pkg/interface/style4/LootMenuIE.swf"
+"interface/style5/LootMenuIE.swf" = "dist/pkg/interface/style5/LootMenuIE.swf"
+
+[nexus]
+mod_category = 84  # Nexus mod category: Patches; written as category= in the github .meta
+
+[github]
+repo = "kxgcayh/UntarnishedUI-QuickLootIE-Patch"
