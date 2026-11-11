@@ -164,9 +164,10 @@ Other Skyrim mods by kxgcayh:
 Re-checked on 2026-11-11 against each mod's Nexus permission block and author notes: the permissions below still match.
 
 - **HotelKosmos**: the original [Untarnished UI QuickLoot IE patch](https://www.nexusmods.com/skyrimspecialedition/mods/140287) and all five skins.
-- **AtomCrafty**: the reskin the original patch was based on; co-author of QuickLoot IE.
+- **AtomCrafty**: the [QuickLoot IE - Dear Diary Dark Mode Reskin](https://www.nexusmods.com/skyrimspecialedition/mods/137059) the original patch was based on, and co-author of QuickLoot IE. His page allows asset use but not upload or modification; HotelKosmos credits him for letting him use it as a base.
 - **Miss Corruption, AtomCrafty and Faen**: [QuickLoot IE](https://www.nexusmods.com/skyrimspecialedition/mods/120075), whose menu this file contains.
-- **Untarnished UI** by its author, for the button art the skins use.
+- **Vorganger**: [Untarnished UI](https://www.nexusmods.com/skyrimspecialedition/mods/75188), for the button art the skins load. The author allows open modification and redistribution of the assets they made, not for sale, and asks to be credited and to be told before you redistribute. Assets from other authors follow those authors' terms.
+- **uranreactor**: [Dear Diary Dark Mode](https://www.nexusmods.com/skyrimspecialedition/mods/60837), which Untarnished UI is based on. Upload, modification, conversion and asset use are allowed; not in sold files.
 - **kxgcayh** (Nexus: kautsaralbaa): port to QuickLoot IE 4.1.3, build scripts and release packaging.
 
 QuickLoot IE is licensed under the GNU GPL v3, and every SWF here is a modified QuickLoot IE menu, so this project is
