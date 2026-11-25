@@ -36,6 +36,14 @@ def find(tags, typ, **attr):
     raise SystemExit("missing %s %r" % (typ, attr))
 
 
+def find_import(tags, symbol):
+    """The import tag that brings in `symbol`. A SWF has several; the first one is the font library."""
+    for t in tags:
+        if t.get("type") == "ImportAssets2Tag" and symbol in [i.text for i in t.findall("names/item")]:
+            return t
+    raise SystemExit("missing import of %s" % symbol)
+
+
 def find_shape(tags, cid):
     for i, t in enumerate(tags):
         if t.get("type", "").startswith("DefineShape") and t.get("shapeId") == cid:
@@ -93,9 +101,7 @@ def main(base_p, style_p, out_p):
         bp[n].insert(idx, m)
 
     # 4. button art import
-    _, s_imp = find(st, "ImportAssets2Tag")
-    _, b_imp = find(bt, "ImportAssets2Tag")
-    b_imp.set("url", s_imp.get("url"))
+    find_import(bt, "ButtonArt").set("url", find_import(st, "ButtonArt").get("url"))
 
     # 5. scaling grid: removed by the patch for the bitmap styles (2, 3, 4 and 5)
     s_grids = [t for t in st if t.get("type") == "DefineScalingGridTag"]

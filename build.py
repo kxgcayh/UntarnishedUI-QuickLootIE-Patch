@@ -8,7 +8,7 @@ Usage: python3 build.py                 (checks inputs, builds the 5 SWFs, packa
        python3 build.py --skip-build    (packages the SWFs already in build/pkg/interface)
 Needs: python3, java, FFDec 26.4.0 (FFDEC_JAR, tools/ffdec/ffdec.jar, or --fetch-ffdec). See BUILDING.md.
 """
-import hashlib, os, pathlib, shutil, subprocess, sys, urllib.request, zipfile
+import hashlib, os, pathlib, shutil, struct, subprocess, sys, urllib.request, zipfile, zlib
 
 HERE = pathlib.Path(__file__).resolve().parent
 BUILD = HERE / "build"
@@ -96,6 +96,41 @@ def build_swfs():
         run(ffdec + ["-xml2swf", str(xml / f"out{n}.xml"), str(out)])
 
 
+def swf_imports(p):  # {symbol: url}, read from the SWF itself (ImportAssets tags 57 and 71)
+    b = pathlib.Path(p).read_bytes()
+    d = b[:8] + (zlib.decompress(b[8:]) if b[:1] == b"C" else b[8:])
+    pos = 8 + (5 + 4 * (d[8] >> 3) + 7) // 8 + 4
+    out = {}
+    while pos < len(d):
+        head, = struct.unpack_from("<H", d, pos)
+        pos += 2
+        code, size = head >> 6, head & 63
+        if size == 63:
+            size, = struct.unpack_from("<I", d, pos)
+            pos += 4
+        body, pos = d[pos:pos + size], pos + size
+        if code == 0:
+            break
+        if code in (57, 71):
+            url, rest = body.split(b"\0", 1)
+            rest = rest[2:] if code == 71 else rest
+            count, = struct.unpack_from("<H", rest)
+            rest = rest[2:]
+            for _ in range(count):
+                name, rest = rest[2:].split(b"\0", 1)
+                out[name.decode()] = url.decode()
+    return out
+
+
+def check_imports():  # each style must import the same button art as its 1.1.3 original
+    for n in STYLES:
+        want = swf_imports(HERE / f"vendor/untarnished-1.1.3/style{n}/LootMenuIE.swf")["ButtonArt"]
+        got = swf_imports(PKG / f"interface/style{n}/LootMenuIE.swf").get("ButtonArt")
+        if got != want:
+            sys.exit(f"style{n} imports ButtonArt from {got}, expected {want}")
+    print("button art import matches 1.1.3 in all styles")
+
+
 def check_outputs():  # a different FFDec or a changed build_style.py gives different SWFs; say so, but go on
     same = True
     for name, want in read_sums("expected.sha256").items():
@@ -104,7 +139,7 @@ def check_outputs():  # a different FFDec or a changed build_style.py gives diff
             sys.exit(f"missing build/pkg/{name}; run without --skip-build")
         if sha(p) != want:
             same = False
-            print(f"warning: {name} differs from the released 1.2.0 build", file=sys.stderr)
+            print(f"warning: {name} differs from the released 1.2.1 build", file=sys.stderr)
     if same:
         print("all SWFs byte-identical to the released build")
 
@@ -144,6 +179,7 @@ def main(args):
     if "--skip-build" not in args:
         build_swfs()
     check_outputs()
+    check_imports()
     package()
 
 

@@ -1,6 +1,6 @@
 name = "UntarnishedUI-QuickLootIE-Patch"
 display_name = "Untarnished UI - QuickLoot IE 4.x Patch"
-version = "1.2.0"
+version = "1.2.1"
 description = "HotelKosmos's five Untarnished UI skins for QuickLoot IE, rebuilt on the QuickLoot IE 4.1.3 loot menu. FOMOD with one style per option."
 
 # archive path = source path (relative to this folder); dist/pkg/ is written by: python3 build.py
@@ -27,6 +27,7 @@ description = "HotelKosmos's five Untarnished UI skins for QuickLoot IE, rebuilt
 "interface/style5/LootMenuIE.swf" = "dist/pkg/interface/style5/LootMenuIE.swf"
 
 [nexus]
+mod_id = 197875  # Nexus page; written as modid= in the github meta.ini and modID= in the .meta
 mod_category = 84  # Nexus mod category: Patches; written as category= in the github .meta
 
 [github]

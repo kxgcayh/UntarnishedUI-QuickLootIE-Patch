@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.1 (2026-11-25)
+- Fixed the button icons: all five styles loaded SkyUI's `skyui/buttonart.swf`. They now load `skyui/buttonArtDD.swf`,
+  the Untarnished UI button art, as 1.1.3 did. The 1.2.0 entry below is wrong about this.
+- The build now fails if a style's button art import differs from 1.1.3. Nothing else in the SWFs changed.
+- New installer preview images, taken on 1.2.1 so they show the Untarnished button icons (the 1.2.0 previews showed
+  SkyUI's).
+
 ## 1.2.0 (2026-11-03)
 - Rebuilt all five styles on QuickLoot IE 4.1.3's own `LootMenuIE.swf`. The menu code is now 4.1.3's, unmodified (interface
   version 6; was 3.4.1's, version 4).

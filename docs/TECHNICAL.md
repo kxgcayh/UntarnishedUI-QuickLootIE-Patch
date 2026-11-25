@@ -106,19 +106,22 @@ as they did in 1.1.3 (READ, from the decompiled code).
 |---|---|
 | AS2 bytecode (pcode) of each 1.2.0 SWF vs stock 4.1.3 | identical, all 5 styles (checked before the clipped-fill fix, which changes no code) |
 | AS2 bytecode of each 1.1.3 SWF vs stock 3.4.1 | identical, all 5 styles |
+| `ButtonArt` import in each built SWF (1.2.1) | `skyui/buttonArtDD.swf`, all 5 styles; 1.2.0 wrongly kept `skyui/buttonart.swf` |
 | toolchain no-op: stock 4.1.3 through `swf2xml` + `xml2swf` with no edit | byte-identical SWF |
 | renders of all sprites not touched by the port (128 per style) vs stock 4.1.3 | pixel-identical, all 5 styles |
 | rendered `LootMenu` sprite, 1.2.0 vs 1.1.3 | styles 3, 4: max channel difference 6/255; styles 1, 2, 7: about 50 px differ, the two scroll arrows, which stay at x = 860 while 4.1.3 moved the background 1 px right |
 | package contents vs 1.1.3 archive | 5 SWFs, `fomod/info.xml` and the preview images changed; style 5 moved from `style7` to `style5`; `ModuleConfig.xml` unchanged; `QLIE-LICENSE.md`, `docs/` and `source/` added at the archive root (the installer does not install them) |
 
-In game (author, 2026-11-03): all five styles load and display on QuickLoot IE 4.1.3 (the installer previews are those
-screenshots), and the right-edge fix on styles 2 and 5 is confirmed. The SWFs were read back with FFDec, the same tool that wrote them; the bytecode and
+In game (author, 2026-11-03): all five styles load and display on QuickLoot IE 4.1.3, and the right-edge fix on styles
+2 and 5 is confirmed. In game (author, 2026-11-25): 1.2.1 shows the Untarnished button icons. The 1.2.1 installer previews
+are new screenshots of each style on 1.2.1 (same chest and items, 16:9 crop around the menu, scaled to 1920 x 1080); the
+1.2.0 previews showed SkyUI's button art. The SWFs were read back with FFDec, the same tool that wrote them; the bytecode and
 pixel comparisons are the checks that do not depend on trusting that read-back.
 
 ## 5. Known limitations
 
 - Built against QuickLoot IE 4.1.3 only. Other 4.x versions were not checked.
-- The preview images in the installer are new screenshots taken on QuickLoot IE 4.1.3.
+- The preview images in the installer are screenshots taken on QuickLoot IE 4.1.3 with 1.2.1.
 - Misaligned first and last rows (1.1.3 comments, 2025-03-02): fixed by HotelKosmos in 1.1.3 ("Should be fixed now", same
   day; 1.1.3 changelog "Fixed misalignments"). 1.2.0 copies the 1.1.3 layout offsets, so it is not an open issue.
 

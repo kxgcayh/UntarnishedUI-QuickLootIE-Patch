@@ -41,7 +41,7 @@ python3 build.py                 # later runs
 python3 build.py --skip-build    # repackage the SWFs already in build/pkg (after changing images, docs or fomod)
 ```
 
-Output: `dist/UntarnishedUI-QuickLootIE-Patch-1.2.0.zip` (version from `fomod/info.xml`). Intermediate files are
+Output: `dist/UntarnishedUI-QuickLootIE-Patch-1.2.1.zip` (version from `fomod/info.xml`). Intermediate files are
 in `build/`.
 
 What the script does:
@@ -51,8 +51,9 @@ What the script does:
 3. Runs `src/build_style.py` per style: copies the five things the 1.1.3 skin changed (background shape and bitmap,
    row highlight, `LootMenu` layout, button art import, scaling grid) onto the 4.1.3 XML.
 4. Converts the result back to `build/pkg/interface/styleN/LootMenuIE.swf`.
-5. Compares the five SWFs with `expected.sha256`, the hashes of the released 1.2.0 build.
-6. Packs the FOMOD zip: `fomod/`, `images/`, `interface/`, plus `QLIE-LICENSE.md`, `docs/` and `source/` (not installed).
+5. Compares the five SWFs with `expected.sha256`, the hashes of the released 1.2.1 build.
+6. Checks that each built SWF imports the same button art file as its 1.1.3 original, and stops if not.
+7. Packs the FOMOD zip: `fomod/`, `images/`, `interface/`, plus `QLIE-LICENSE.md`, `docs/` and `source/` (not installed).
 
 The build stops if:
 - a file in `vendor/` is missing or differs from `inputs.sha256`;
@@ -94,7 +95,7 @@ build.py              Build, checks and packaging
 src/                  build_style.py (the transplant) and the inspection helpers
 vendor/               The input SWFs, unmodified (sources and terms in vendor/README.md)
 inputs.sha256         Hashes of the files in vendor/
-expected.sha256       Hashes of the released 1.2.0 SWFs
+expected.sha256       Hashes of the released 1.2.1 SWFs
 fomod/                FOMOD info.xml and ModuleConfig.xml shipped in the zip
 images/               Installer preview images
 docs/                 CHANGELOG and TECHNICAL notes
