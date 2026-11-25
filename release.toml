@@ -28,6 +28,8 @@ description = "HotelKosmos's five Untarnished UI skins for QuickLoot IE, rebuilt
 
 [nexus]
 mod_id = 197875  # Nexus page; written as modid= in the github meta.ini and modID= in the .meta
+file_id = 844924  # main file (1.2.1, uploaded 2026-11-25); release.py nexus uploads new versions of it
+category = "main"
 mod_category = 84  # Nexus mod category: Patches; written as category= in the github .meta
 
 [github]
